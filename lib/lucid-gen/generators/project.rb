@@ -43,12 +43,6 @@ module LucidGen
         end
       end
 
-      def copy_events
-        if driver.downcase == 'fluent'
-          copy_file 'events-fluent.rb', "#{name}/common/support/events.rb"
-        end
-      end
-
       def copy_gemfile
         template 'Gemfile.tt', "#{name}/Gemfile"
       end
