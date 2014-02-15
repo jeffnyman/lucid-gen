@@ -10,7 +10,17 @@ Install the gem as normal:
 
 ## Usage
 
-Usage instructions coming soon.
+The easiest way to use Venom would be to have it generate the default structure for you:
+
+    $ lucid-gen project project-spec
+
+This command will create a project structure with the directory name as project-spec.
+
+The default driver for the projects created is [Fluent](https://github.com/jnyman/fluent). You can change this by specifying a driver
+
+    $ lucid-gen project project-spec --driver=capybara
+
+Do note that, for the moment, LucidGen only generates driver files relevant to Fluent.
 
 ## Contributing
 
