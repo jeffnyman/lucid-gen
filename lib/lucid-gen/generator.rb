@@ -1,4 +1,5 @@
 require 'thor'
+require 'lucid-gen/generators/project'
 
 module LucidGen
   class Generator < Thor
@@ -9,6 +10,7 @@ module LucidGen
     def project(name)
       puts "Name of project: #{name}"
       driver = options[:driver].nil? ? 'fluent' : options[:driver]
+      LucidGen::Generators::Project.start([name, driver])
     end
   end
 end
