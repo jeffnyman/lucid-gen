@@ -38,8 +38,8 @@ module LucidGen
       end
 
       def copy_driver
-        if driver.downcase == 'fluent'
-          copy_file 'driver-fluent.rb', "#{name}/common/support/driver.rb"
+        if driver.downcase == 'symbiont'
+          copy_file 'driver-symbiont.rb', "#{name}/common/support/driver.rb"
         end
       end
 
