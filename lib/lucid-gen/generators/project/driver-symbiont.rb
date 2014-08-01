@@ -16,9 +16,9 @@ if ENV['BROWSER']
     target = ENV['BROWSER'].to_sym
   else
     puts "The browser #{ENV['BROWSER']} is not supported."
-    puts ""
-    puts "Supported browsers are:"
-    puts "  firefox, ie, chrome"
+    puts ''
+    puts 'Supported browsers are:'
+    puts '  firefox, ie, chrome'
     Kernel.exit(1)
   end
 end
@@ -45,7 +45,7 @@ module Symbiont
 
     def self.watir_browser(target)
       if ENV['HEADLESS']
-        @driver = Watir::Browser.new :phantomjs
+        @browser = Watir::Browser.new :phantomjs
       else
         Watir::Browser.new(target, :http_client => client)
       end
@@ -62,7 +62,7 @@ AfterConfiguration do |config|
 end
 
 Before('~@manual','~@practice','~@sequence') do
-  @driver = Symbiont::Browser.start
+  @browser = Symbiont::Browser.start
 end
 
 AfterStep('@pause') do
@@ -82,8 +82,8 @@ After do |scenario|
   def screenshot_name(type, name)
     screenshot = "./results/#{type}_#{name.gsub(' ','_').gsub(/[^0-9A-Za-z_]/, '')}.png"
 
-    if @driver
-      encoded_img = @driver.driver.screenshot_as(:base64)
+    if @browser
+      encoded_img = @browser.driver.screenshot_as(:base64)
       embed("data:image/png;base64,#{encoded_img}", 'image/png')
 
       return screenshot
